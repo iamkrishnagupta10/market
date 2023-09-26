@@ -3,7 +3,7 @@
 import qs from 'query-string';
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
-import { IconType } from "react-icons";
+import Icon, {IconType} from '@icon-park/react/es/all'
 
 interface CategoryBoxProps {
   icon: IconType,
@@ -61,7 +61,7 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
         ${selected ? 'text-neutral-800' : 'text-neutral-500'}
       `}
     >
-      <Icon size={26} />
+      <Icon/>
       <div className="font-medium text-sm">
         {label}
       </div>

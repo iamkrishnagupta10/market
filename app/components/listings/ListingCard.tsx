@@ -15,6 +15,14 @@ import {
 import HeartButton from "../HeartButton";
 import Button from "../Button";
 import ClientOnly from "../ClientOnly";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 interface ListingCardProps {
   data: SafeListing;
@@ -71,49 +79,23 @@ const ListingCard: React.FC<ListingCardProps> = ({
   }, [reservation]);
 
   return (
-    <div 
-      onClick={() => router.push(`/listings/${data.id}`)} 
-      className="col-span-1 cursor-pointer group"
-    >
-      <div className="flex flex-col gap-2 w-full">
-        <div 
-          className="
-            aspect-square 
-            w-full 
-            relative 
-            overflow-hidden 
-            rounded-xl
-          "
-        >
+    <Card onClick={() => router.push(`/listings/${data.id}`)}>
+      <CardHeader>
+        <CardTitle>{location?.region}, {location?.label}</CardTitle>
+        <CardDescription>{reservationDate || data.category}</CardDescription>
+      </CardHeader>
+      <CardContent>
+        {data.imageSrc ? (
           <Image
             fill
-            className="
-              object-cover 
-              h-full 
-              w-full 
-              group-hover:scale-110 
-              transition
-            "
+            className="object-cover h-full w-full group-hover:scale-110 transition"
             src={data.imageSrc}
             alt="Listing"
           />
-          <div className="
-            absolute
-            top-3
-            right-3
-          ">
-            <HeartButton 
-              listingId={data.id} 
-              currentUser={currentUser}
-            />
-          </div>
-        </div>
-        <div className="font-semibold text-lg">
-          {location?.region}, {location?.label}
-        </div>
-        <div className="font-light text-neutral-500">
-          {reservationDate || data.category}
-        </div>
+        ) : (
+          <div className="h-full w-full bg-gray-300">No Image</div>
+        )}
+        <HeartButton listingId={data.id} currentUser={currentUser} />
         <div className="flex flex-row items-center gap-1">
           <div className="font-semibold">
             $ {price}
@@ -122,17 +104,19 @@ const ListingCard: React.FC<ListingCardProps> = ({
             <div className="font-light">night</div>
           )}
         </div>
-        {onAction && actionLabel && (
+      </CardContent>
+      {onAction && actionLabel && (
+        <CardFooter>
           <Button
             disabled={disabled}
             small
-            label={actionLabel} 
+            label={actionLabel}
             onClick={handleCancel}
           />
-        )}
-      </div>
-    </div>
-   );
-}
- 
+        </CardFooter>
+      )}
+    </Card>
+  );
+};
+
 export default ListingCard;

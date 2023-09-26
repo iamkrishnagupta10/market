@@ -1,101 +1,81 @@
 'use client';
 
 import { usePathname, useSearchParams } from 'next/navigation';
-import { TbBeach, TbMountain, TbPool } from 'react-icons/tb';
-import { 
-  GiBarn, 
-  GiBoatFishing, 
-  GiCactus, 
-  GiCastle, 
-  GiCaveEntrance, 
-  GiForestCamp, 
-  GiIsland,
-  GiWindmill
-} from 'react-icons/gi';
-import { FaSkiing } from 'react-icons/fa';
-import { BsSnow } from 'react-icons/bs';
-import { IoDiamond } from 'react-icons/io5';
-import { MdOutlineVilla } from 'react-icons/md';
+import { CosmeticBrush, Music, Chess, Code, Robot, English, MusicCd, Flask, Pencil, Bookshelf, Cooking, Soccer, BookOne, FileEditingOne, ChessOne, SourceCode, PlayBasketball } from '@icon-park/react';
 
 import CategoryBox from "../CategoryBox";
 import Container from '../Container';
 
-
 export const categories = [
   {
-    label: 'Beach',
-    icon: TbBeach,
-    description: 'This property is close to the beach!',
+    label: 'Academics',
+    icon: () => <BookOne theme="two-tone" fill={['#333', '#d0021b']} strokeWidth={2} size={32} />,
+    description: 'Programs focused on academic enrichment.'
   },
   {
-    label: 'Windmills',
-    icon: GiWindmill,
-    description: 'This property is has windmills!',
+    label: 'Arts',
+    icon: () => <CosmeticBrush theme="two-tone" fill={['#333', '#d0021b']} strokeWidth={2} size={32} />,
+    description: 'Programs related to arts and crafts.'
   },
   {
-    label: 'Modern',
-    icon: MdOutlineVilla,
-    description: 'This property is modern!'
+    label: 'Music',
+    icon: () => <Music theme="two-tone" fill={['#333', '#d0021b']} strokeWidth={2} size={32} />,
+    description: 'Programs related to music education.'
   },
   {
-    label: 'Countryside',
-    icon: TbMountain,
-    description: 'This property is in the countryside!'
+    label: 'Sports',
+    icon: () => <PlayBasketball theme="two-tone" fill={['#333', '#d0021b']} strokeWidth={2} size={32} />,
+    description: 'Programs related to sports activities.'
   },
   {
-    label: 'Pools',
-    icon: TbPool,
-    description: 'This is property has a beautiful pool!'
+    label: 'Chess',
+    icon: () => <ChessOne theme="two-tone" fill={['#333', '#d0021b']} strokeWidth={2} size={32} />,
+    description: 'Programs related to chess and strategy games.'
   },
   {
-    label: 'Islands',
-    icon: GiIsland,
-    description: 'This property is on an island!'
+    label: 'Coding',
+    icon: () => <SourceCode theme="two-tone" fill={['#333', '#d0021b']} strokeWidth={2} size={32} />,
+    description: 'Programs related to computer programming.'
   },
   {
-    label: 'Lake',
-    icon: GiBoatFishing,
-    description: 'This property is near a lake!'
+    label: 'Robotics',
+    icon: () => <Robot theme="two-tone" fill={['#333', '#d0021b']} strokeWidth={2} size={32} />,
+    description: 'Programs related to robotics and engineering.'
   },
   {
-    label: 'Skiing',
-    icon: FaSkiing,
-    description: 'This property has skiing activies!'
+    label: 'Language',
+    icon: () => <English theme="two-tone" fill={['#333', '#d0021b']} strokeWidth={2} size={32} />,
+    description: 'Programs related to language learning.'
   },
   {
-    label: 'Castles',
-    icon: GiCastle,
-    description: 'This property is an ancient castle!'
+    label: 'Guitar',
+    icon: () => <Music theme="two-tone" fill={['#333', '#d0021b']} strokeWidth={2} size={32} />,
+    description: 'Programs related to guitar lessons.'
   },
   {
-    label: 'Caves',
-    icon: GiCaveEntrance,
-    description: 'This property is in a spooky cave!'
+    label: 'Science',
+    icon: () => <Flask theme="two-tone" fill={['#333', '#d0021b']} strokeWidth={2} size={32} />,
+    description: 'Programs related to science experiments.'
   },
   {
-    label: 'Camping',
-    icon: GiForestCamp,
-    description: 'This property offers camping activities!'
+    label: 'Writing',
+    icon: () => <FileEditingOne theme="two-tone" fill={['#333', '#d0021b']} strokeWidth={2} size={32} />,
+    description: 'Programs related to creative writing.'
   },
   {
-    label: 'Arctic',
-    icon: BsSnow,
-    description: 'This property is in arctic environment!'
+    label: 'Reading',
+    icon: () => <Bookshelf theme="two-tone" fill={['#333', '#d0021b']} strokeWidth={2} size={32} />,
+    description: 'Programs related to reading and literature.'
   },
   {
-    label: 'Desert',
-    icon: GiCactus,
-    description: 'This property is in the desert!'
+    label: 'Cooking',
+    icon: () => <Cooking theme="two-tone" fill={['#333', '#d0021b']} strokeWidth={2} size={32} />,
+    description: 'Programs related to cooking and baking.'
   },
   {
-    label: 'Barns',
-    icon: GiBarn,
-    description: 'This property is in a barn!'
-  },
-  {
-    label: 'Lux',
-    icon: IoDiamond,
-    description: 'This property is brand new and luxurious!'
+    label: 'Soccer',
+    icon: () => <Soccer  theme="two-tone" fill={['#333', '#d0021b']} strokeWidth={2} size={32} />,
+    description: 'Programs related to soccer training.'
   }
 ]
 

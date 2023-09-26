@@ -2,64 +2,47 @@
 
 import Select from 'react-select'
 
-import useCountries from '@/app/hooks/useCountries';
+import citiesInBC from '@/app/hooks/useCountries';
 
-export type CountrySelectValue = {
-  flag: string;
+export type CitySelectValue = {
   label: string;
-  latlng: number[],
-  region: string;
-  value: string
+  latlng: number[];
+  value: string;
 }
 
-interface CountrySelectProps {
-  value?: CountrySelectValue;
-  onChange: (value: CountrySelectValue) => void;
+interface CitySelectProps {
+  value?: CitySelectValue;
+  onChange: (value: CitySelectValue) => void;
 }
 
-const CountrySelect: React.FC<CountrySelectProps> = ({
+const CitySelect: React.FC<CitySelectProps> = ({
   value,
   onChange
 }) => {
-  const { getAll } = useCountries();
+  const { getAll } = citiesInBC();
 
-  return ( 
-    <div>
+  return (
+    <div style={{ zIndex: 1000 }}> {/* Adjust z-index here */}
       <Select
-        placeholder="Anywhere"
+        placeholder="Select a city in BC"
         isClearable
         options={getAll()}
         value={value}
-        onChange={(value) => onChange(value as CountrySelectValue)}
-        formatOptionLabel={(option: any) => (
-          <div className="
-          flex flex-row items-center gap-3">
-            <div>{option.flag}</div>
-            <div>
-              {option.label},
-              <span className="text-neutral-500 ml-1">
-                {option.region}
-              </span>
-            </div>
-          </div>
-        )}
-        classNames={{
-          control: () => 'p-3 border-2',
-          input: () => 'text-lg',
-          option: () => 'text-lg'
-        }}
-        theme={(theme) => ({
-          ...theme,
-          borderRadius: 6,
-          colors: {
-            ...theme.colors,
-            primary: 'black',
-            primary25: '#ffe4e6'
-          }
-        })}
+        onChange={(value) => onChange(value as CitySelectValue)}
+        // ... (rest of your Select props)
       />
+      <div className="mt-4">
+        <label htmlFor="address" className="block text-sm font-medium text-gray-600">Complete Address</label>
+        <input 
+          type="text" 
+          id="address" 
+          name="address" 
+          className="mt-1 p-2 w-full border rounded-md"
+          placeholder="Enter complete address"
+        />
+      </div>
     </div>
-   );
-}
- 
-export default CountrySelect;
+  );
+};
+
+export default CitySelect;

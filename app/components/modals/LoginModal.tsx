@@ -18,7 +18,8 @@ import useLoginModal from "@/app/hooks/useLoginModal";
 import Modal from "./Modal";
 import Input from "../inputs/Input";
 import Heading from "../Heading";
-import Button from "../Button";
+import { Button } from "@/components/ui/button";
+import { Icons } from "@/components/icons"
 
 const LoginModal = () => {
   const router = useRouter();
@@ -96,21 +97,15 @@ const LoginModal = () => {
   const footerContent = (
     <div className="flex flex-col gap-4 mt-3">
       <hr />
-      <Button 
-        outline 
-        label="Continue with Google"
-        icon={FcGoogle}
-        onClick={() => signIn('google')}
-      />
-      <Button 
-        outline 
-        label="Continue with Github"
-        icon={AiFillGithub}
-        onClick={() => signIn('github')}
-      />
+      <Button variant="outline" >
+            <Icons.google className="mr-2 h-4 w-4"
+            onClick={() => signIn('google')} />
+            Google
+            
+      </Button>
       <div className="
       text-neutral-500 text-center mt-4 font-light">
-        <p>First time using Airbnb?
+        <p>First time using DWUL X?
           <span 
             onClick={onToggle} 
             className="
